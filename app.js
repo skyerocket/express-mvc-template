@@ -1,13 +1,17 @@
-const serverless = require('serverless-http');
+const serverless = require('serverless-http')
 const express = require('express')
 const cors = require('cors')
 const routes = require('./routes')
 
 const app = express()
 
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 app.use(cors())
+app.use((req, __, next) => {
+    console.log("Request body:", req.body)
+    next();
+  });
 
 app.get('/', (__, res) => {
     res.send('hello')

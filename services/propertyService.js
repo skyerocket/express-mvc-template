@@ -1,7 +1,12 @@
 const data = []
 
 const addProperty = async property => {
-  return data.push(property)
+    let sanitizedProperty = property;
+    if (!property.suburb) {
+        sanitizedProperty = {...property, suburb: ''}
+    }
+    data.push(sanitizedProperty)
+    return sanitizedProperty
 }
 
 const searchProperty = async filter => {

@@ -1,5 +1,5 @@
 const propertyService = require('../services/propertyService')
-
+const { validationResult } = require('express-validator')
 const { addProperty, searchProperty } = propertyService
 
 /*
@@ -9,14 +9,20 @@ const { addProperty, searchProperty } = propertyService
 */
 const add = async (req, res, next) => {
   try {
-    console.log(req.body)
-    const {data} = req.body
-    await addProperty(data)
-    res.sendStatus(201)
-    next()
+    const errors = validationResult(req).array();
+    if (errors.length > 0) {
+      res.status(422).send(errors) && next()
+    } 
+    const data = req.body
+    if(data) {
+      const result = await addProperty(data)
+      if (result) {
+        res.status(201).send(result) && next()
+      }
+    }
   } catch(e) {
     console.log(e.message)
-    res.sendStatus(500) && next(e)
+    res.status(500) && next(e)
   }
 }
 

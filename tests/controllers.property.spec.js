@@ -2,7 +2,7 @@ const sinon = require('sinon')
 const expect = require('chai').expect
 const propertyController = require('../controllers/propertyController')
 const request = require('supertest')
-const app = require('../app')
+const {app} = require('../app')
 const {exampleData} = require('../dal/data')
 const partial =
 [

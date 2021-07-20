@@ -21,7 +21,7 @@ const searchProperty = async filter => {
     if (results.length > 0) {
         const average = arr => arr.reduce((a, b) => a + b, 0 ) / arr.length;
         const avgSale = average(data.map(item => item.salePrice))
-        results.map(entry => ({...entry, avgCompare: entry.salePrice > avgSale}))
+        results.map(entry => ({...entry, avgCompare: entry.salePrice > avgSale ? 1 : entry.salePrice === avgSale ? 0 : -1 }))
     }
     return results
 }

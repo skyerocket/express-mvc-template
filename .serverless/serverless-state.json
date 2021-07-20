@@ -174,7 +174,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/express-mvc-template/dev/1626751775622-2021-07-20T03:29:35.622Z/express-mvc-template.zip"
+                "S3Key": "serverless/express-mvc-template/dev/1626754788436-2021-07-20T04:19:48.436Z/express-mvc-template.zip"
               },
               "Handler": "app/app.handler",
               "Runtime": "nodejs12.x",
@@ -192,14 +192,14 @@
               "AppLogGroup"
             ]
           },
-          "AppLambdaVersionOxZZB2afJ44UHUOCLbb8QJ2FP833yZesEDTM9Yxg": {
+          "AppLambdaVersion0aItIbrsBPRDICEMGPIbXQR9gnXSuduQJ5FyibcOEA": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "AppLambdaFunction"
               },
-              "CodeSha256": "UrysjeD/KI5kWQNI5byZNCtHPdlQA9LGjfeKHyjBQz0="
+              "CodeSha256": "igeAq17OAQoQsr0ZFhkRhcxyYppc5YQWMewnUeLEAFA="
             }
           },
           "ApiGatewayRestApi": {
@@ -324,7 +324,7 @@
               "AppLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1626751763748": {
+          "ApiGatewayDeployment1626754777389": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -387,7 +387,7 @@
           "AppLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "AppLambdaVersionOxZZB2afJ44UHUOCLbb8QJ2FP833yZesEDTM9Yxg"
+              "Ref": "AppLambdaVersion0aItIbrsBPRDICEMGPIbXQR9gnXSuduQJ5FyibcOEA"
             },
             "Export": {
               "Name": "sls-express-mvc-template-dev-AppLambdaFunctionQualifiedArn"
@@ -523,7 +523,7 @@
         "timeout": 6,
         "runtime": "nodejs12.x",
         "vpc": {},
-        "versionLogicalId": "AppLambdaVersionOxZZB2afJ44UHUOCLbb8QJ2FP833yZesEDTM9Yxg"
+        "versionLogicalId": "AppLambdaVersion0aItIbrsBPRDICEMGPIbXQR9gnXSuduQJ5FyibcOEA"
       }
     },
     "configValidationMode": "warn",
@@ -544,7 +544,7 @@
     "artifact": "/Users/feiyang/Desktop/projects2/hometradehubcode/.serverless/express-mvc-template.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/express-mvc-template/dev/1626751775622-2021-07-20T03:29:35.622Z",
+    "artifactDirectoryName": "serverless/express-mvc-template/dev/1626754788436-2021-07-20T04:19:48.436Z",
     "artifact": "express-mvc-template.zip"
   }
 }

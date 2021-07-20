@@ -1,8 +1,12 @@
-# hometradehubcode
+# express-mvc-template
 
 API /api/property/add
 
 API /api/property/search
+
+Swagger: 
+
+API url:
 
 Assumptions: 
 1. case insensitive partial search by suburb, passing other filter won't have any affect

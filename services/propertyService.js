@@ -17,17 +17,17 @@ const addProperty = async property => {
 
 const searchProperty = async filter => {
     const {suburb} = filter
-    const entry = data.find(item => {
+    const matches = data.filter(item => {
         const words = item.suburb.split(' ')
-        return words.map(word=> word.toLowerCase().includes(suburb))
+        return words.find(word => (word.toLowerCase().includes(suburb.toLowerCase())))
     })
-    let result = entry;
-    if (entry) {
+    let results = matches;
+    if (results.length > 0) {
         const average = arr => arr.reduce((a, b) => a + b, 0 ) / arr.length;
         const avgSale = average(data.map(item => item.salePrice))
-        result = {...entry, avgCompare: entry.salePrice >= avgSale}
+        results.map(entry => ({...entry, avgCompare: entry.salePrice > avgSale}))
     }
-    return result
+    return results
 }
 
 module.exports = {

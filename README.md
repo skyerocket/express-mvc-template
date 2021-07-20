@@ -1,6 +1,7 @@
 # express-mvc-template
 
 API /api/property/add
+
 API /api/property/search
 
 #### Swagger

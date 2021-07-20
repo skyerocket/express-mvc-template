@@ -18,7 +18,7 @@ const add = async (req, res, next) => {
     if (result) {
       res.status(201).send(result) && next()
     }
-    res.status(400).send({msg: 'Bad Request'});
+    res.status(400).send({msg: 'Bad Request'}) // if somehow cannot push object
   } catch(e) {
     console.log(e.message)
     res.status(500) && next(e)

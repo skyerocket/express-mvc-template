@@ -1,10 +1,4 @@
-const exampleData = [
-    { address: 'State Library', salePrice: 2000000, description: 'Test Description', suburb: 'Melbourne CBD' },
-    { address: 'Another Library', salePrice: 500000, description: 'This is another one', suburb: 'Southbank' },
-    { address: 'A Wonderful Place', salePrice: 250000, description: 'Really Great', suburb: 'Caulfield' },
-    { address: 'Happy Palace', salePrice: 900000, description: 'Great Great', suburb: 'South Yarra' }
-]
-const data = [...exampleData]
+const {data} = require('../dal/data')
 
 const addProperty = async property => {
     let sanitizedProperty = property;
@@ -17,6 +11,8 @@ const addProperty = async property => {
 
 const searchProperty = async filter => {
     const {suburb} = filter
+    if (!suburb) return
+    if (suburb.trim().length === 0) return data
     const matches = data.filter(item => {
         const words = item.suburb.split(' ')
         return words.find(word => (word.toLowerCase().includes(suburb.toLowerCase())))

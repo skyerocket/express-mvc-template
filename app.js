@@ -11,7 +11,21 @@ app.use(cors())
 app.use((req, __, next) => {
     console.log("Request body:", req.body)
     next();
-  });
+});
+/*
+* Middleware to prevent Error: Can't set headers after they are sent to the client
+* https://stackoverflow.com/a/43671944
+*/
+app.use((__,res,next) => { 
+    var _send = res.send;
+   var sent = false;
+   res.send = function(data){
+       if(sent) return;
+       _send.bind(res)(data);
+       sent = true;
+   };
+   next();
+});
 
 app.get('/', (__, res) => {
     res.send('hello')

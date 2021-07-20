@@ -3,23 +3,22 @@ const { validationResult } = require('express-validator')
 const { addProperty, searchProperty } = propertyService
 
 /*
- * Endpoint to add property with address, sale price, and description.
- * Post: {new property}
- * Return: {status}
+  * Endpoint to add property with address, sale price, and description.
+  * Post: {new property}
+  * Return: {status}
 */
 const add = async (req, res, next) => {
   try {
-    const errors = validationResult(req).array();
+    const errors = validationResult(req).array()
     if (errors.length > 0) {
       res.status(422).send(errors) && next()
-    } 
-    const data = req.body
-    if(data) {
-      const result = await addProperty(data)
-      if (result) {
-        res.status(201).send(result) && next()
-      }
     }
+    const data = req.body
+    const result = await addProperty(data)
+    if (result) {
+      res.status(201).send(result) && next()
+    }
+    res.status(400).send({msg: 'Bad Request'});
   } catch(e) {
     console.log(e.message)
     res.status(500) && next(e)
@@ -33,15 +32,16 @@ const add = async (req, res, next) => {
 */
 const search = async (req, res, next) => {
   try {
-    const {filter} = req.body
-    const data = await searchProperty(filter)
-    if (data) {
-      res.sendStatus(data)
-    }
-    next()
+    const errors = validationResult(req).array()
+    if (errors.length > 0) {
+      res.status(422).send(errors) && next()
+    } 
+    const filter = req.body
+    const results = await searchProperty(filter)
+    res.status(200).send(results) && next()
   } catch(e) {
     console.log(e.message)
-    res.sendStatus(500) && next(e)
+    res.status(500) && next(e)
   }
 }
 

@@ -14,7 +14,7 @@ router.post('/property/add',
     propertyController.add)
 router.post('/property/search', 
     [
-        check('suburb').not().isEmpty().withMessage('Must include suburb')
+        check('suburb').not().isEmpty().withMessage('Must include suburb'),
     ],
     propertyController.search)
 
